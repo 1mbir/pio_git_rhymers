@@ -5,6 +5,9 @@ import edu.kis.vh.nursery.HanoiRhymer;
 import edu.kis.vh.nursery.factory.DefaultRhymersFactory;
 import edu.kis.vh.nursery.factory.Rhymersfactory;
 
+// alt + strzałka w lewo powoduje przełączenie do otwartych kart po lewo
+// alt + strzałka w prawo powoduje przełączenie do otwartych kart po prawo
+
 class RhymersDemo {
 
     public static void main(String[] args) {
