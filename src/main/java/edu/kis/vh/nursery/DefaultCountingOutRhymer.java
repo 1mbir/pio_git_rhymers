@@ -6,31 +6,34 @@ public class DefaultCountingOutRhymer {
     private static final int IF_EMPTY = -1;
 
     private final int[] numbers = new int[CAPACITY];
-    public int total = INITIAL;
+    private int total = INITIAL;
 
     public void countIn(int in) {
         if (!isFull())
-            numbers[++total] = in;
+            numbers[total] = in;
+    }
+
+    public int getTotal() {
+        return total;
     }
 
     public boolean callCheck() {
-        return total == INITIAL;
+        return getTotal() == INITIAL;
     }
 
     public boolean isFull() {
-        return total == CAPACITY - 1;
+        return getTotal() == CAPACITY - 1;
     }
 
     protected int peekaboo() {
         if (callCheck())
             return IF_EMPTY;
-        return numbers[total];
+        return numbers[getTotal()];
     }
 
     public int countOut() {
         if (callCheck())
             return IF_EMPTY;
-        return numbers[total--];
+        return numbers[total];
     }
-
 }
