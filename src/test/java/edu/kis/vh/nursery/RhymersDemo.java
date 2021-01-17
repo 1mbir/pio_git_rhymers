@@ -2,6 +2,7 @@ package edu.kis.vh.nursery;
 
 import edu.kis.vh.nursery.factory.DefaultRhymersFactory;
 import edu.kis.vh.nursery.factory.RhymersFactory;
+import org.junit.AfterClass;
 
 // alt + strzałka w lewo powoduje przełączenie do otwartych kart po lewo
 // alt + strzałka w prawo powoduje przełączenie do otwartych kart po prawo
@@ -11,6 +12,11 @@ class RhymersDemo {
     public static void main(String[] args) {
         RhymersFactory factory = new DefaultRhymersFactory();
 
+        testRhymers(factory);
+
+    }
+
+    private static void testRhymers(RhymersFactory factory) {
         DefaultCountingOutRhymer[] rhymers = {factory.getStandardRhymer(), factory.getFalseRhymer(),
                 factory.getFIFORhymer(), factory.getHanoiRhymer()};
 
@@ -30,7 +36,6 @@ class RhymersDemo {
 
         System.out.println("total rejected is "
                 + ((HanoiRhymer) rhymers[3]).reportRejected());
-
     }
 
 }
