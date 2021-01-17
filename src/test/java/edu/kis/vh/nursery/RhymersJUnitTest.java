@@ -1,5 +1,6 @@
 package edu.kis.vh.nursery;
 
+import edu.kis.vh.nursery.list.IntLinkedList;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -73,6 +74,30 @@ public class RhymersJUnitTest {
         Assert.assertEquals(testValue, result);
         result = rhymer.countOut();
         Assert.assertEquals(EMPTY_STACK_VALUE, result);
+    }
+
+    @Test
+    public void testPush(){
+        IntLinkedList linkedList = new IntLinkedList();
+        for(int i=0;i<10;i++){
+            linkedList.push(i);
+            Assert.assertEquals(i,linkedList.top());
+        }
+
+    }
+
+    @Test
+    public void testPop(){
+        IntLinkedList linkedList = new IntLinkedList();
+        for(int i=0;i<10;i++){
+            linkedList.push(i);
+        }
+
+        for(int i=9;i>=0;i--){
+            int check = linkedList.pop();
+            Assert.assertEquals(i,check);
+        }
+
     }
 
 }
