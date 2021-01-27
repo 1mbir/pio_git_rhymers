@@ -1,14 +1,17 @@
 package edu.kis.vh.nursery;
 
+import edu.kis.vh.nursery.list.IntArrayStack;
+import edu.kis.vh.nursery.list.StackList;
+
 /**
  * @author Mikołaj Imbor
  *
  * class implementing counting out rhymer
  */
 public class DefaultCountingOutRhymer {
-    private IntArrayStack stack;
+    private StackList stack;
 
-    public DefaultCountingOutRhymer(IntArrayStack stack) {
+    public DefaultCountingOutRhymer(StackList stack) {
         this.stack = stack;
     }
 
@@ -20,7 +23,7 @@ public class DefaultCountingOutRhymer {
      * @param in number to add
      */
     public void countIn(int in) {
-        stack.countIn(in);
+        stack.push(in);
     }
 
     /**
@@ -33,7 +36,7 @@ public class DefaultCountingOutRhymer {
      * @return true if table is callable, else return false
      */
     public boolean callCheck() {
-        return stack.callCheck();
+        return stack.isEmpty();
     }
 
     /**
@@ -47,13 +50,13 @@ public class DefaultCountingOutRhymer {
      * @return last number added
      */
     protected int peekaboo() {
-        return stack.peekaboo();
+        return stack.top();
     }
 
     /**
      * @return last number added and deletes it from table
      */
     public int countOut() {
-        return stack.countOut();
+        return stack.pop();
     }
 }

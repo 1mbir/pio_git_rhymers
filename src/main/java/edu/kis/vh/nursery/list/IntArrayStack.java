@@ -1,11 +1,11 @@
-package edu.kis.vh.nursery;
+package edu.kis.vh.nursery.list;
 
 /**
  * @author Mikołaj Imbor
  *
  * class implementing array stack
  */
-public class IntArrayStack {
+public class IntArrayStack implements StackList {
     private static final int CAPACITY = 12;
     private static final int INITIAL = -1;
     private static final int IF_EMPTY = -1;
@@ -16,7 +16,8 @@ public class IntArrayStack {
     /**
      * @param in number to add
      */
-    public void countIn(int in) {
+    @Override
+    public void push(int in) {
         if (!isFull())
             numbers[++total] = in;
     }
@@ -24,6 +25,7 @@ public class IntArrayStack {
     /**
      * @return total quantity of numbers
      */
+    @Override
     public int getTotal() {
         return total;
     }
@@ -31,13 +33,15 @@ public class IntArrayStack {
     /**
      * @return true if table is callable, else return false
      */
-    public boolean callCheck() {
+    @Override
+    public boolean isEmpty() {
         return getTotal() == INITIAL;
     }
 
     /**
      * @return true if table is full, else return false
      */
+    @Override
     public boolean isFull() {
         return getTotal() == CAPACITY - 1;
     }
@@ -45,8 +49,9 @@ public class IntArrayStack {
     /**
      * @return last number added
      */
-    public int peekaboo() {
-        if (callCheck())
+    @Override
+    public int top() {
+        if (isEmpty())
             return IF_EMPTY;
         return numbers[getTotal()];
     }
@@ -54,8 +59,9 @@ public class IntArrayStack {
     /**
      * @return last number added and deletes it from table
      */
-    public int countOut() {
-        if (callCheck())
+    @Override
+    public int pop() {
+        if (isEmpty())
             return IF_EMPTY;
         return numbers[total--];
     }

@@ -1,9 +1,9 @@
 package edu.kis.vh.nursery.list;
 
-public class IntLinkedList {
+public class IntLinkedList implements StackList{
     private static final int IF_EMPTY = -1;
+    private int total=0;
     Node last;
-    int i;
 
     private class Node {
 
@@ -36,7 +36,9 @@ public class IntLinkedList {
         }
     }
 
+    @Override
     public void push(int i) {
+        total++;
         if (last == null)
             last = new Node(i);
         else {
@@ -46,25 +48,35 @@ public class IntLinkedList {
         }
     }
 
+    @Override
     public boolean isEmpty() {
         return last == null;
     }
 
+    @Override
     public boolean isFull() {
         return false;
     }
 
+    @Override
+    public int getTotal(){
+        return total;
+    }
+
+    @Override
     public int top() {
         if (isEmpty())
             return IF_EMPTY;
         return last.getValue();
     }
 
+    @Override
     public int pop() {
         if (isEmpty())
             return IF_EMPTY;
         int ret = last.getValue();
         last = last.getPrev();
+        total--;
         return ret;
     }
 
