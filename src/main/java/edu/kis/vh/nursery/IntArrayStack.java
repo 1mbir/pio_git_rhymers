@@ -3,64 +3,60 @@ package edu.kis.vh.nursery;
 /**
  * @author Mikołaj Imbor
  *
- * class implementing counting out rhymer
+ * class implementing array stack
  */
-public class DefaultCountingOutRhymer {
+public class IntArrayStack {
+    private static final int CAPACITY = 12;
+    private static final int INITIAL = -1;
     private static final int IF_EMPTY = -1;
 
-    private IntArrayStack stack;
-
-    public DefaultCountingOutRhymer(IntArrayStack stack) {
-        this.stack = stack;
-    }
-
-    public DefaultCountingOutRhymer(){
-        stack = new IntArrayStack();
-    }
+    private final int[] numbers = new int[CAPACITY];
+    private int total = INITIAL;
 
     /**
      * @param in number to add
      */
     public void countIn(int in) {
-        if (!stack.isFull())
-            stack.countIn(in);
+        if (!isFull())
+            numbers[++total] = in;
     }
 
     /**
      * @return total quantity of numbers
      */
     public int getTotal() {
-        return stack.getTotal();
+        return total;
     }
+
     /**
      * @return true if table is callable, else return false
      */
     public boolean callCheck() {
-        return stack.callCheck();
+        return getTotal() == INITIAL;
     }
 
     /**
      * @return true if table is full, else return false
      */
     public boolean isFull() {
-        return stack.isFull();
+        return getTotal() == CAPACITY - 1;
     }
 
     /**
      * @return last number added
      */
     protected int peekaboo() {
-        if (stack.callCheck())
+        if (callCheck())
             return IF_EMPTY;
-        return stack.peekaboo();
+        return numbers[getTotal()];
     }
 
     /**
      * @return last number added and deletes it from table
      */
     public int countOut() {
-        if (stack.callCheck())
+        if (callCheck())
             return IF_EMPTY;
-        return stack.countOut();
+        return numbers[total--];
     }
 }
