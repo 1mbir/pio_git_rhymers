@@ -6,8 +6,6 @@ package edu.kis.vh.nursery;
  * class implementing counting out rhymer
  */
 public class DefaultCountingOutRhymer {
-    private static final int IF_EMPTY = -1;
-
     private IntArrayStack stack;
 
     public DefaultCountingOutRhymer(IntArrayStack stack) {
@@ -22,8 +20,7 @@ public class DefaultCountingOutRhymer {
      * @param in number to add
      */
     public void countIn(int in) {
-        if (!stack.isFull())
-            stack.countIn(in);
+        stack.countIn(in);
     }
 
     /**
@@ -50,8 +47,6 @@ public class DefaultCountingOutRhymer {
      * @return last number added
      */
     protected int peekaboo() {
-        if (stack.callCheck())
-            return IF_EMPTY;
         return stack.peekaboo();
     }
 
@@ -59,8 +54,6 @@ public class DefaultCountingOutRhymer {
      * @return last number added and deletes it from table
      */
     public int countOut() {
-        if (stack.callCheck())
-            return IF_EMPTY;
         return stack.countOut();
     }
 }

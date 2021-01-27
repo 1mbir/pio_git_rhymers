@@ -45,7 +45,7 @@ public class IntArrayStack {
     /**
      * @return last number added
      */
-    protected int peekaboo() {
+    public int peekaboo() {
         if (callCheck())
             return IF_EMPTY;
         return numbers[getTotal()];
