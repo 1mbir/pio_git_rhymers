@@ -1,7 +1,7 @@
 package edu.kis.vh.nursery.stack;
 
 public class IntLinkedList implements StackList{
-    private static final int IF_EMPTY = -1;
+    private static final int IF_EMPTY = 0;
     private int total=0;
     Node last;
 

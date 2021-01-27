@@ -8,7 +8,7 @@ package edu.kis.vh.nursery.stack;
 public class IntArrayStack implements StackList {
     private static final int CAPACITY = 12;
     private static final int INITIAL = -1;
-    private static final int IF_EMPTY = -1;
+    private static final int IF_EMPTY = 0;
 
     private final int[] numbers = new int[CAPACITY];
     private int total = INITIAL;
